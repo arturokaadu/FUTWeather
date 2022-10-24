@@ -1,8 +1,16 @@
 .App {
   text-align: center;
+  
+}
+body{
+  background: url('../img/BackgroundImg.jfif') no-repeat;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
 }
 
 .row {
   display: flex;
   justify-content: center;
 }
+
