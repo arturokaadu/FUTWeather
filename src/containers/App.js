@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 import "./App.css";
 import Nav from "../components/Nav.jsx";
@@ -11,6 +12,7 @@ const apiKey = "b32216f8417048478f9126d87e0fb170";
 
 function App() {
   const [cities, setCities] = useState([]);
+
   function onClose(id) {
     setCities((oldCities) => oldCities.filter((c) => c.id !== id));
   }
@@ -29,11 +31,14 @@ function App() {
             id: recurso.id,
             wind: recurso.wind.speed,
             temp: recurso.main.temp,
+            feels: Math.round(recurso.main.feels_like),
             name: recurso.name,
             weather: recurso.weather[0].main,
             clouds: recurso.clouds.all,
             latitud: recurso.coord.lat,
             longitud: recurso.coord.lon,
+           
+            
           };
           setCities((oldCities) => [...oldCities, ciudad]);
         } else {
@@ -49,9 +54,11 @@ function App() {
       return null;
     }
   }
+
+ 
   return (
     <div className="App ">
-      <Route path={"/"} render={() => <Nav onSearch={onSearch} />} />
+      <Route path={"/"} render={() => <Nav onSearch={onSearch}  />} />
       <Route
         exact
         path={"/"}

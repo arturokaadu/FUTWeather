@@ -3,8 +3,24 @@ import Logo from '../img/Weather.png'
 import SearchBar from './SearchBar.jsx';
 import './Nav.css';
 import  {Link} from "react-router-dom"
+import { useEffect } from 'react';
+import { useState } from 'react';
+
+const codeMapping = {
+  "01d": "clear-sky-day",
+  "01n": "clear-sky-night",
+};
+
 
 function Nav({onSearch}) {
+ 
+  const [code, setCode] = useState(null) // <-- We'll update this from Search.js
+  const [backgroundImage, setBackgroundImage] = useState("")
+
+  useEffect(() => {
+    setBackgroundImage(codeMapping[`${code}`]);
+  },[code]);
+
   return (
     <nav className="navbar navbar-dark bg-dark">
       <Link to={'/'}>
@@ -15,9 +31,9 @@ function Nav({onSearch}) {
         </Link>
         {/* <Link to={'/about'}>About</Link> */}
         
-
+     ¿
         <SearchBar
-          onSearch={onSearch}
+          onSearch={onSearch} setCode={setCode}
         /> 
 
     </nav>
