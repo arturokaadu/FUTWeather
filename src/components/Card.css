@@ -25,3 +25,13 @@
   margin-top: 0px !important;
   padding-top: 0px !important;
 }
+
+.city h1{
+  padding: 0;
+  margin: 7px 0px;
+  text-align: center;
+  font-size: 23pt;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  font-weight: normal;
+}
