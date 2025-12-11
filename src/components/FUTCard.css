@@ -1,0 +1,405 @@
+/**
+ * =====================================================
+ * FUT CARD - FIFA Ultimate Team Style CSS
+ * =====================================================
+ * 
+ * Replicates the iconic FUT card design:
+ * - Hexagonal top corners
+ * - Metallic gradients (gold, silver, bronze)
+ * - Stats layout with small labels
+ * - Shine/hover effects
+ */
+
+/* ===== BASE CARD ===== */
+.fut-card {
+    position: relative;
+    width: 220px;
+    height: 320px;
+    margin: 15px;
+
+    /* FUT card shape with clip-path */
+    clip-path: polygon(15% 0%,
+            /* Top left corner cut */
+            85% 0%,
+            /* Top right corner cut */
+            100% 8%,
+            /* Right top */
+            100% 100%,
+            /* Right bottom */
+            0% 100%,
+            /* Left bottom */
+            0% 8%
+            /* Left top */
+        );
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    /* Animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    /* Shadow */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+}
+
+.fut-card:hover {
+    transform: translateY(-10px) scale(1.05) rotateY(5deg);
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+}
+
+/* ===== CARD INNER ===== */
+.fut-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.fut-card__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+
+.fut-card:hover .fut-card__close {
+    opacity: 1;
+}
+
+.fut-card__close:hover {
+    background: #ef4444;
+    transform: scale(1.1);
+}
+
+/* ===== TOP SECTION: Rating + Position ===== */
+.fut-card__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.fut-card__rating {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fut-card__position {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.fut-card__play-score {
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* ===== WEATHER ICON (like player photo) ===== */
+.fut-card__photo {
+    width: 90px;
+    height: 90px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fut-card__weather-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.fut-card:hover .fut-card__weather-icon {
+    transform: scale(1.15);
+}
+
+/* ===== CITY NAME ===== */
+.fut-card__name {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    margin: 8px 0;
+    padding: 4px 12px;
+
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.2) 20%,
+            rgba(0, 0, 0, 0.2) 80%,
+            transparent 100%);
+
+    transition: all 0.2s ease;
+}
+
+.fut-card__name:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== STATS SECTION ===== */
+.fut-card__stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+    margin-top: auto;
+}
+
+.fut-card__stat-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fut-card__stat {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.fut-card__stat-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-width: 28px;
+    text-align: right;
+}
+
+.fut-card__stat-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+}
+
+/* Right column - stats on the right */
+.fut-card__stat-col:last-child .fut-card__stat {
+    flex-direction: row-reverse;
+}
+
+.fut-card__stat-col:last-child .fut-card__stat-value {
+    text-align: left;
+}
+
+/* ===== BOTTOM: Flag + Condition ===== */
+.fut-card__bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fut-card__flag {
+    font-size: 1.2rem;
+}
+
+.fut-card__condition {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+/* ===== SHINE EFFECT ===== */
+.fut-card__shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 100%);
+
+    z-index: 3;
+    pointer-events: none;
+    transition: left 0.5s ease;
+}
+
+.fut-card:hover .fut-card__shine {
+    left: 150%;
+}
+
+/* =====================================================
+   CARD TIERS - Gold, Silver, Bronze, Special
+   ===================================================== */
+
+/* ===== GOLD CARD ===== */
+.fut-card--gold {
+    background: linear-gradient(135deg,
+            #d4a84b 0%,
+            #f5d998 25%,
+            #e8c86e 50%,
+            #c9a227 75%,
+            #b8860b 100%);
+    color: #1a1a1a;
+}
+
+.fut-card--gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== SILVER CARD ===== */
+.fut-card--silver {
+    background: linear-gradient(135deg,
+            #8c8c8c 0%,
+            #d9d9d9 25%,
+            #c4c4c4 50%,
+            #a3a3a3 75%,
+            #858585 100%);
+    color: #1a1a1a;
+}
+
+.fut-card--silver::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== BRONZE CARD ===== */
+.fut-card--bronze {
+    background: linear-gradient(135deg,
+            #8b5a2b 0%,
+            #cd853f 25%,
+            #b87333 50%,
+            #a0522d 75%,
+            #8b4513 100%);
+    color: #fff;
+}
+
+.fut-card--bronze::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== SPECIAL CARD (TOTW / Extreme Weather) ===== */
+.fut-card--special {
+    background: linear-gradient(135deg,
+            #1a1a2e 0%,
+            #16213e 25%,
+            #0f3460 50%,
+            #e94560 75%,
+            #1a1a2e 100%);
+    color: #fff;
+}
+
+.fut-card--special::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(233, 69, 96, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(15, 52, 96, 0.3) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+    animation: specialPulse 3s ease-in-out infinite;
+}
+
+@keyframes specialPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.fut-card--special .fut-card__rating {
+    color: #e94560;
+    text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .fut-card {
+        width: 180px;
+        height: 265px;
+        margin: 10px;
+    }
+
+    .fut-card__rating {
+        font-size: 2rem;
+    }
+
+    .fut-card__photo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .fut-card__name {
+        font-size: 0.85rem;
+    }
+
+    .fut-card__stat-value {
+        font-size: 0.8rem;
+    }
+}

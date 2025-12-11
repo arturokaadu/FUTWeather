@@ -1,0 +1,120 @@
+/* NextMatch.css */
+.next-match {
+    background: rgba(30, 30, 40, 0.95);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.next-match__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.next-match__teams {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.next-match__team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    text-align: center;
+}
+
+.next-match__logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.next-match__team-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.next-match__vs {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.next-match__info {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.next-match__date {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffd700;
+}
+
+.next-match__venue {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.next-match__weather {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.next-match__weather-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-match__temp {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.next-match__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.next-match--loading,
+.next-match--error {
+    text-align: center;
+    padding: 40px;
+}
+
+.next-match--gold {
+    border: 2px solid #ffd700;
+}
+
+.next-match--silver {
+    border: 2px solid #c0c0c0;
+}
+
+.next-match--bronze {
+    border: 2px solid #cd7f32;
+}

@@ -1,0 +1,149 @@
+/**
+ * =====================================================
+ * CLIMA DEL HINCHA - Styles
+ * =====================================================
+ * 
+ * Uses "glassmorphism" effect to match the existing card design.
+ * BEM naming convention: Block__Element--Modifier
+ * 
+ * BEM EXPLAINED:
+ * - Block: The main component (.clima-hincha)
+ * - Element: Parts of the block (.clima-hincha__title)
+ * - Modifier: Variations (.clima-hincha__activity--featured)
+ */
+
+/* ===== MAIN CONTAINER ===== */
+.clima-hincha {
+  /* Glassmorphism effect (matches existing cards) */
+  backdrop-filter: blur(29px);
+  background-color: rgba(255, 255, 255, 0.15);
+  
+  /* Rounded corners and spacing */
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+  
+  /* Smooth entrance animation */
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Fade in animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== HEADER ===== */
+.clima-hincha__title {
+  /* White text with slight transparency */
+  color: rgba(255, 255, 255, 0.95);
+  
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  
+  /* Left align */
+  text-align: left;
+}
+
+/* ===== MAIN SUGGESTION CARD ===== */
+.clima-hincha__main-card {
+  /* The gradient background is set dynamically via inline styles */
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+  
+  /* Subtle shadow for depth */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  /* Smooth color transitions when weather changes */
+  transition: background 0.3s ease;
+}
+
+.clima-hincha__emoji {
+  /* Large emoji for visual impact */
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  
+  /* Prevent text selection (emojis can look weird selected) */
+  user-select: none;
+}
+
+.clima-hincha__activity {
+  /* Primary activity title */
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  
+  /* Text shadow for readability on gradient backgrounds */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.clima-hincha__message {
+  /* Fun message below the activity */
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  margin: 0;
+  
+  /* Italic for personality */
+  font-style: italic;
+}
+
+/* ===== ACTIVITY LIST ===== */
+.clima-hincha__activities {
+  margin-top: 1rem;
+}
+
+.clima-hincha__activities-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem 0;
+  text-align: left;
+}
+
+.clima-hincha__activity-list {
+  /* Flexbox to wrap chips nicely */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.clima-hincha__activity-chip {
+  /* Individual activity "chip" / "pill" */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2rem; /* Fully rounded ends */
+  padding: 0.4rem 0.8rem;
+  
+  font-size: 0.85rem;
+  color: white;
+  
+  /* Subtle border for definition */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Hover effect */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.clima-hincha__activity-chip:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 480px) {
+  .clima-hincha__emoji {
+    font-size: 2rem;
+  }
+  
+  .clima-hincha__activity {
+    font-size: 1.1rem;
+  }
+}

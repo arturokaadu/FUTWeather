@@ -1,0 +1,214 @@
+/**
+ * =====================================================
+ * HOURLY TIMELINE - Styles
+ * =====================================================
+ * 
+ * Creates a horizontal bar chart using CSS flexbox.
+ * Bars animate in with a staggered effect.
+ * "Picado time" hours are highlighted in green.
+ */
+
+/* ===== MAIN CONTAINER ===== */
+.hourly-timeline {
+    backdrop-filter: blur(29px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+
+    animation: fadeInUp 0.5s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
+}
+
+/* ===== HEADER ===== */
+.hourly-timeline__title {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    text-align: left;
+}
+
+/* ===== LEGEND ===== */
+.hourly-timeline__legend {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.hourly-timeline__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hourly-timeline__legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.hourly-timeline__legend-dot--picado {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+/* ===== THE CHART ===== */
+.hourly-timeline__chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 4px;
+    height: 150px;
+    /* Fixed height for the chart area */
+    padding: 0 0.25rem;
+
+    /* Subtle bottom border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+/* ===== INDIVIDUAL BAR CONTAINER ===== */
+.hourly-timeline__bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    /* Allows shrinking */
+    gap: 4px;
+}
+
+/* Highlight container for picado time */
+.hourly-timeline__bar-container--picado {
+    /* Subtle background glow */
+    background: linear-gradient(to top,
+            rgba(34, 197, 94, 0.1),
+            transparent);
+    border-radius: 4px;
+    margin: -4px -2px;
+    padding: 4px 2px;
+}
+
+/* ===== TEMPERATURE LABEL ===== */
+.hourly-timeline__temp {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+}
+
+/* ===== THE BAR ITSELF ===== */
+.hourly-timeline__bar {
+    width: 100%;
+    max-width: 35px;
+    min-width: 20px;
+
+    /* Gradient background */
+    background: linear-gradient(to top,
+            rgba(96, 165, 250, 0.6),
+            /* Blue at bottom */
+            rgba(147, 197, 253, 0.4)
+            /* Lighter blue at top */
+        );
+
+    border-radius: 4px 4px 0 0;
+
+    /* Center the icon */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2px;
+
+    /* Animation */
+    animation: growUp 0.5s ease-out forwards;
+    transform-origin: bottom;
+
+    /* Smooth height transitions */
+    transition: height 0.3s ease;
+}
+
+/* Picado time bar - green gradient */
+.hourly-timeline__bar--picado {
+    background: linear-gradient(to top,
+            rgba(34, 197, 94, 0.7),
+            /* Green at bottom */
+            rgba(74, 222, 128, 0.5)
+            /* Lighter green at top */
+        );
+
+    /* Subtle glow effect */
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Bar grow animation */
+@keyframes growUp {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+/* ===== WEATHER ICON ===== */
+.hourly-timeline__icon {
+    width: 24px;
+    height: 24px;
+
+    /* Slight transparency */
+    opacity: 0.9;
+}
+
+/* ===== HOUR LABEL ===== */
+.hourly-timeline__hour {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.25rem;
+    white-space: nowrap;
+}
+
+/* ===== TIP MESSAGE ===== */
+.hourly-timeline__tip {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .hourly-timeline__chart {
+        height: 120px;
+        gap: 2px;
+    }
+
+    .hourly-timeline__temp {
+        font-size: 0.6rem;
+    }
+
+    .hourly-timeline__hour {
+        font-size: 0.55rem;
+    }
+
+    .hourly-timeline__icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* For very small screens, hide some bars */
+@media (max-width: 360px) {
+    .hourly-timeline__bar-container:nth-child(odd) {
+        display: none;
+    }
+}

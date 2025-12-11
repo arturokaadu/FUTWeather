@@ -1,0 +1,166 @@
+/**
+ * =====================================================
+ * TEAM SEARCH - CSS
+ * =====================================================
+ */
+
+.team-search {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ===== INPUT WRAPPER ===== */
+.team-search__input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+
+    transition: all 0.3s ease;
+}
+
+.team-search__input-wrap:focus-within {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.team-search__icon {
+    font-size: 1.2rem;
+}
+
+.team-search__input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.team-search__input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.team-search__loading {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== RESULTS DROPDOWN ===== */
+.team-search__results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    padding: 8px;
+
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+
+    list-style: none;
+    max-height: 350px;
+    overflow-y: auto;
+    z-index: 100;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.team-search__result {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.team-search__result:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.team-search__logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px;
+}
+
+.team-search__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.team-search__name {
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.team-search__country {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+.team-search__venue {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+}
+
+/* ===== NO RESULTS ===== */
+.team-search__no-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    padding: 20px;
+
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+/* ===== DEMO BADGE ===== */
+.team-search__demo-badge {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    padding: 2px 8px;
+
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+    color: #1a1a1a;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    border-radius: 20px;
+}

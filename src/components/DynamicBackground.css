@@ -1,0 +1,465 @@
+/**
+ * =====================================================
+ * DYNAMIC BACKGROUND - CSS Styles & Animations
+ * =====================================================
+ * 
+ * FIXED: Scroll issue - now uses proper layering
+ */
+
+/* ===== MAIN BACKGROUND CONTAINER ===== */
+.dynamic-bg {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+
+    /* Image Background Settings */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Parallax-like effect */
+
+    /* Smooth transition when weather/image changes */
+    transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
+    background-color: #0f172a;
+    /* Default Dark Blue Fallback */
+}
+
+/* Fallback Colors (if image fails) */
+.dynamic-bg.bg--snow,
+.dynamic-bg.bg--cold {
+    background-color: #ddebf7;
+    /* Light icy blue */
+}
+
+.dynamic-bg.bg--sunny {
+    background-color: #f0f9ff;
+    /* Light sky blue */
+}
+
+.dynamic-bg.bg--rainy {
+    background-color: #1e293b;
+    /* Dark slate */
+}
+
+/* Background layer - stays fixed while content scrolls */
+.dynamic-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background: inherit;
+    pointer-events: none;
+}
+
+.dynamic-bg__content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* ===== ANIMATED OVERLAY (FUT STYLE) ===== */
+.dynamic-bg__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* FUT 14/15 Style: Dark Glass + Geometric Shards */
+    background:
+        /* Main dark tint */
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.85) 100%),
+
+        /* Shard Pattern 1 (Angled Light) */
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 40%, rgba(255, 255, 255, 0.05) 60%, transparent 100%),
+
+        /* Shard Pattern 2 (Opposing Angle) */
+        linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.03) 30%, transparent 31%),
+
+        /* Hex texture feel */
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.1) 10px, rgba(0, 0, 0, 0.1) 20px);
+
+    /* Glass Effect */
+    backdrop-filter: blur(3px);
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Add a subtle vignette */
+.dynamic-bg__overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+/* ===== HEAT HAZE EFFECT (Refined) ===== */
+.heat-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Warm Glow (Subtle Orange) */
+    background: radial-gradient(circle at center, rgba(255, 180, 50, 0.15), transparent 70%);
+
+    pointer-events: none;
+    z-index: 1;
+
+    /* Realistic Heat Haze/Shimmer */
+    backdrop-filter: blur(1px);
+    animation: heatShimmer 5s infinite alternate;
+}
+
+@keyframes heatShimmer {
+    0% {
+        backdrop-filter: blur(0.5px);
+    }
+
+    100% {
+        backdrop-filter: blur(1.5px);
+    }
+}
+
+.heat-effect::after {
+    display: none;
+}
+
+/* Add a subtle vignette */
+.dynamic-bg__overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+/* ===== SUNNY ANIMATION ===== */
+.sunnyPulse {
+    background: radial-gradient(circle at 80% 20%,
+            rgba(255, 255, 255, 0.4) 0%,
+            transparent 50%);
+    animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* ===== CLOUD DRIFT ANIMATION ===== */
+.cloudDrift {
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 60%, rgba(255, 255, 255, 0.15) 0%, transparent 35%);
+    animation: cloudMove 20s ease-in-out infinite;
+}
+
+@keyframes cloudMove {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(30px);
+    }
+}
+
+/* ===== RAIN DROP ANIMATION ===== */
+.rainDrop {
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.1) 100%);
+}
+
+/* ===== THUNDER FLASH ===== */
+.thunderFlash {
+    animation: lightning 8s ease-in-out infinite;
+}
+
+@keyframes lightning {
+
+    0%,
+    89%,
+    91%,
+    93%,
+    100% {
+        background: transparent;
+    }
+
+    90%,
+    92% {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ===== NIGHT TWINKLE ===== */
+.nightTwinkle {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    animation: starTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* ===== RAIN EFFECT ===== */
+.rain-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.rain-drop {
+    position: absolute;
+    top: -20px;
+    width: 2px;
+    height: 15px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(174, 194, 224, 0.5));
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0.3;
+    }
+}
+
+/* ===== SNOW EFFECT ===== */
+.snow-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.snowflake {
+    position: absolute;
+    top: -20px;
+    color: rgba(255, 255, 255, 0.8);
+    animation: snowFall linear infinite;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.5;
+    }
+}
+
+/* ===== MIST FLOAT ===== */
+.mistFloat {
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    animation: mistDrift 15s ease-in-out infinite;
+}
+
+@keyframes mistDrift {
+
+    0%,
+    100% {
+        transform: translateX(-20px);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateX(20px);
+        opacity: 0.8;
+    }
+}
+
+/* ===== DEFAULT PULSE ===== */
+.defaultPulse {
+    background: radial-gradient(circle at 50% 30%,
+            rgba(255, 255, 255, 0.2) 0%,
+            transparent 50%);
+    animation: defaultPulseAnim 5s ease-in-out infinite;
+}
+
+@keyframes defaultPulseAnim {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ===== DRIZZLE FADE ===== */
+.drizzleFade {
+    background: linear-gradient(to bottom,
+            rgba(100, 100, 120, 0.2) 0%,
+            transparent 100%);
+    animation: drizzleAnim 3s ease-in-out infinite;
+}
+
+@keyframes drizzleAnim {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ===== HEAT HAZE EFFECT (Refined) ===== */
+.heat-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Warm Glow (Subtle Orange/Gold) */
+    background: radial-gradient(circle at center, rgba(255, 200, 100, 0.1) 0%, rgba(255, 140, 0, 0.05) 80%);
+
+    pointer-events: none;
+    z-index: 1;
+
+    /* Realistic Heat Haze/Shimmer (Less Distortion) */
+    backdrop-filter: blur(0.5px) sepia(0.2);
+    animation: heatShimmer 5s infinite alternate;
+}
+
+@keyframes heatShimmer {
+    0% {
+        backdrop-filter: blur(0.5px) sepia(0.2);
+    }
+
+    100% {
+        backdrop-filter: blur(1.5px) sepia(0.3);
+    }
+}
+
+.heat-effect::after {
+    display: none;
+}
+
+/* ===== SUN FLARE EFFECT ===== */
+.sun-effect {
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 223, 0, 0.1) 40%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+    animation: sunMove 20s infinite alternate;
+}
+
+@keyframes sunMove {
+    from {
+        transform: translate(0, 0);
+        opacity: 0.6;
+    }
+
+    to {
+        transform: translate(-20px, 20px);
+        opacity: 0.8;
+    }
+}
+
+/* ===== COLD EFFECT ===== */
+.cold-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    /* Frosty/Blue Tint Vignette */
+    background: radial-gradient(circle at center, transparent 40%, rgba(200, 220, 255, 0.2) 80%, rgba(180, 210, 255, 0.4) 100%);
+    box-shadow: inset 0 0 100px rgba(180, 220, 255, 0.3);
+
+    /* Subtle pulsing freeze */
+    animation: freezePulse 5s infinite alternate;
+}
+
+@keyframes freezePulse {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

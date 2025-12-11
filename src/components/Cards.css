@@ -1,6 +1,94 @@
+/**
+ * =====================================================
+ * CARDS CONTAINER - CSS
+ * =====================================================
+ */
+
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+  min-height: calc(100vh - 100px);
+}
+
+.cards__pinned {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.cards__pinned-title {
+  color: #22c55e;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+/* ===== EMPTY STATE ===== */
+.cards--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards__empty-message {
+  text-align: center;
+  color: white;
+  padding: 40px;
+
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cards__empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 20px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cards__empty-message h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.cards__empty-message p {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .cards {
+    padding: 90px 10px 30px;
+  }
 }

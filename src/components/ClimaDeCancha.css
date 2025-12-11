@@ -1,0 +1,258 @@
+/**
+ * =====================================================
+ * CLIMA DE CANCHA - Styles
+ * =====================================================
+ * 
+ * Features:
+ * - Circular score gauge (hand-coded, no library!)
+ * - Decorative soccer field at the bottom
+ * - Glassmorphism effect to match other cards
+ */
+
+/* ===== MAIN CONTAINER ===== */
+.clima-cancha {
+    backdrop-filter: blur(29px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+
+    /* Entrance animation */
+    animation: fadeInUp 0.5s ease-out;
+    animation-delay: 0.1s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== HEADER ===== */
+.clima-cancha__title {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    text-align: left;
+}
+
+/* ===== SCORE SECTION ===== */
+.clima-cancha__score-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* ===== CIRCULAR GAUGE ===== */
+/*
+  The gauge is a semi-circle that shows the score visually.
+  It's made of:
+  1. A gray background arc
+  2. A colored fill arc that rotates based on score
+  3. The score number in the center
+*/
+.clima-cancha__gauge {
+    position: relative;
+    width: 140px;
+    height: 70px;
+    /* Half the width = semi-circle */
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.clima-cancha__gauge-bg {
+    /* Gray background arc */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 140px;
+    height: 140px;
+
+    /* Semi-circle using border-radius */
+    border-radius: 70px 70px 0 0;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.clima-cancha__gauge-fill {
+    /* Colored progress arc */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 140px;
+    height: 140px;
+
+    border-radius: 70px 70px 0 0;
+
+    /* Clip to show only half */
+    clip-path: polygon(0 100%, 0 50%, 50% 0, 100% 50%, 100% 100%);
+
+    /* Transform origin at bottom center for rotation */
+    transform-origin: 50% 100%;
+
+    /* Smooth animation when score changes */
+    transition: transform 0.5s ease-out, background-color 0.3s ease;
+}
+
+.clima-cancha__score-value {
+    /* Score number in center of gauge */
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.clima-cancha__score-number {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+
+    /* Smooth color transition */
+    transition: color 0.3s ease;
+}
+
+.clima-cancha__score-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== RATING ===== */
+.clima-cancha__rating {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+
+    /* Smooth color transition */
+    transition: color 0.3s ease;
+}
+
+/* ===== FACTORS LIST ===== */
+.clima-cancha__factors {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+}
+
+.clima-cancha__factors-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0 0 0.75rem 0;
+    text-align: left;
+}
+
+.clima-cancha__factor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.clima-cancha__factor {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.clima-cancha__factor-emoji {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.clima-cancha__factor-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Prevents overflow */
+}
+
+.clima-cancha__factor-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.clima-cancha__factor-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+}
+
+.clima-cancha__factor-impact {
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* ===== DECORATIVE SOCCER FIELD ===== */
+.clima-cancha__field {
+    margin-top: 1rem;
+    height: 30px;
+    background: linear-gradient(90deg,
+            rgba(34, 197, 94, 0.3) 0%,
+            rgba(34, 197, 94, 0.4) 50%,
+            rgba(34, 197, 94, 0.3) 100%);
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+
+    /* Stripe pattern like a soccer field */
+    background-image: repeating-linear-gradient(90deg,
+            rgba(34, 197, 94, 0.35),
+            rgba(34, 197, 94, 0.35) 10%,
+            rgba(34, 197, 94, 0.25) 10%,
+            rgba(34, 197, 94, 0.25) 20%);
+}
+
+.clima-cancha__field-center {
+    /* Center circle */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.clima-cancha__field-line {
+    /* Center line */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .clima-cancha__gauge {
+        width: 120px;
+        height: 60px;
+    }
+
+    .clima-cancha__gauge-bg,
+    .clima-cancha__gauge-fill {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px 60px 0 0;
+    }
+
+    .clima-cancha__score-number {
+        font-size: 1.5rem;
+    }
+}

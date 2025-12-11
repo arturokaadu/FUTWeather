@@ -1,37 +1,176 @@
+/**
+ * =====================================================
+ * CARD - Redesigned with Modern Look
+ * =====================================================
+ */
+
+/* ===== CARD CONTAINER ===== */
 .card {
-  margin: 20px;
-   width: 18rem; 
-  border-radius: 0.75em;
-  /*   box-shadow: 0 3px 3px #0001; */
-    /* background-color: rgb(147, 207, 29); */
-   /*  width: 73%; */
-    backdrop-filter: blur(29px);
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: auto;
+  /* Modern card dimensions */
+  width: 280px;
+  min-height: 200px;
+  margin: 15px;
+
+  /* Glassmorphism effect */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 100%);
+
+  /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.25rem;
+
+  /* Shadow for depth */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  /* Smooth transitions */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Animation */
+  animation: cardFadeIn 0.5s ease-out;
+
+  overflow: hidden;
+  position: relative;
 }
 
-.card-title {
-  margin-bottom: 15px;
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== CLOSE BUTTON ===== */
 #closeIcon {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 8px;
-  margin-top: 8px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
 }
 
-.card-body {
-  margin-top: 0px !important;
-  padding-top: 0px !important;
-}
-
-.city h1{
+#closeIcon .btn {
+  width: 28px;
+  height: 28px;
   padding: 0;
-  margin: 7px 0px;
-  text-align: center;
-  font-size: 23pt;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+
+  background: rgba(239, 68, 68, 0.8);
+  border: none;
+  color: white;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#closeIcon .btn:hover {
+  background: rgba(239, 68, 68, 1);
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* ===== CARD BODY ===== */
+.card-body {
+  padding: 1.25rem;
+  padding-top: 0.75rem;
+}
+
+/* ===== CITY NAME ===== */
+.city {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.city h1 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+
   text-transform: uppercase;
-  color: #FFFFFF;
-  font-weight: normal;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  transition: color 0.2s ease;
+}
+
+.card:hover .city h1 {
+  color: #fbbf24;
+  /* Golden highlight on hover */
+}
+
+/* ===== WEATHER ICON ===== */
+.iconoClima {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.card:hover .iconoClima {
+  transform: scale(1.1);
+}
+
+/* ===== TEMPERATURE ROW ===== */
+.card .row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.card .col-sm-4,
+.card .col-md-4,
+.card .col-lg-4 {
+  width: auto;
+  flex: none;
+  padding: 0;
+}
+
+/* Temperature boxes */
+.card .row>div {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.card .row p {
+  margin: 0;
+  color: white;
+}
+
+.card .row p:first-child {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.card .row p:last-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .card {
+    width: calc(100% - 30px);
+    margin: 10px 15px;
+  }
 }

@@ -1,13 +1,164 @@
-.cityCard{
-    margin: 20px;
-   width: 18rem; 
-  border-radius: 0.75em;
-  /*   box-shadow: 0 3px 3px #0001; */
-    /* background-color: rgb(147, 207, 29); */
-   /*  width: 73%; */
-    backdrop-filter: blur(29px);
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: auto;
-    margin-top: 95px;
-    padding: 13px;
+/**
+ * =====================================================
+ * CITY PAGE - Updated Styles with Scroll Fix
+ * =====================================================
+ */
+
+/* ===== PAGE CONTAINER ===== */
+.city-page {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 90px;
+  padding-bottom: 2rem;
+  min-height: 100vh;
+  /* Ensure scrolling works */
+  overflow-y: visible;
+}
+
+/* ===== MAIN WEATHER CARD ===== */
+.cityCard {
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Subtle shadow for depth */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.cityCard--error {
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cityCard--error h2 {
+  margin-bottom: 0.5rem;
+}
+
+.cityCard h2 {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.iconoClima {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* ===== BIG TEMPERATURE DISPLAY ===== */
+.city-temp-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.city-temp-value {
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.city-temp-unit {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+}
+
+.city-feels {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* ===== INFO GRID ===== */
+.info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* ===== FEATURES SECTION ===== */
+.city-features {
+  margin-top: 1rem;
+}
+
+/* ===== COORDINATES FOOTER ===== */
+.city-coords {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+/* ===== BACK BUTTON ===== */
+.city-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.city-back:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .city-page {
+    padding: 0.75rem;
+    padding-top: 80px;
+    padding-bottom: 2rem;
+  }
+
+  .city-temp-value {
+    font-size: 3.5rem;
+  }
+
+  .cityCard {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
 }

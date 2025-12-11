@@ -1,55 +1,120 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import './City.css';
-//componente de clase
-/* class City extends React.Component{
-  //constructor -> cuando quiero definir un estado!
-  //constructor (props){ super (props) this.state}
-  render (){
-return(
-
-    
-    <div>
-            Hlle {params.cityId}
-    </div>
-)
-
-  }  
-}
-
-export default City
+/**
+ * =====================================================
+ * CITY COMPONENT - Detailed Weather View
+ * =====================================================
+ * 
+ * This is the page you see when you click on a city card.
+ * It shows detailed weather info PLUS our three new features:
+ * 
+ * 1. Clima del Hincha - Activity suggestions
+ * 2. Clima de Cancha - Soccer playability score  
+ * 3. Hourly Timeline - Temperature graph
+ * 
+ * WHAT CHANGED:
+ * - Imported the three new components
+ * - Added them to the render below the weather info
+ * - Reorganized layout to fit more content
  */
 
-//componente de funcion
+import React from "react";
+import './City.css';
 
-function City({ city, img }) {
+// Import our new feature components!
+import ClimaDelHincha from "./ClimaDelHincha";
+import ClimaDeCancha from "./ClimaDeCancha";
+import HourlyTimeline from "./HourlyTimeline";
+
+function City({ city, forecastData }) {
+  // -----------------------------------------------
+  // Handle missing city data
+  // -----------------------------------------------
   if (!city) {
-    alert("Ciudad Inexistente");
-    /* acà podria ir un 404 image return <div>NOsiste</div> */
+    return (
+      <div className="cityCard cityCard--error">
+        <h2>Ciudad no encontrada</h2>
+        <p>Esta ciudad no está en la lista. Buscá otra!</p>
+      </div>
+    );
   }
 
-  //useEffect
-
+  // -----------------------------------------------
+  // Render the city detail page
+  // -----------------------------------------------
   return (
-    <div className="cityCard">
-      <div className="container">
-        <h2>{city.name}</h2>
-        <img className="iconoClima" src={"http://openweathermap.org/img/wn/"+city.img+"@2x.png"} width="80" height="80" alt="" />
-       
-        <div className="info">
-          <div>Temperatura: {city.temp && city.temp} ºC</div>
-          <div>Clima: {city.weather}</div>
-         {/*  {console.log(city)} */}
-          <div>Viento: {city.wind} km/h</div>
-          <div>Cantidad de nubes: {city.clouds}</div>
-          <div>Latitud: {city.latitud}º</div>
-          <div>Longitud: {city.longitud}º</div>
-          <div>Sensacion: {city.feels}ºC</div>
-         {/*  <div>{city.img}</div> */}
+    <div className="city-page">
+      {/* MAIN WEATHER CARD */}
+      <div className="cityCard">
+        <div className="container">
+          {/* City name and main icon */}
+          <h2>{city.name}</h2>
+          <img
+            className="iconoClima"
+            src={`http://openweathermap.org/img/wn/${city.img}@2x.png`}
+            width="100"
+            height="100"
+            alt={city.weather}
+          />
 
+          {/* Current temperature - BIG and prominent */}
+          <div className="city-temp-main">
+            <span className="city-temp-value">{Math.round(city.temp)}</span>
+            <span className="city-temp-unit">°C</span>
+          </div>
 
+          {/* Feels like temperature */}
+          <p className="city-feels">
+            Sensación térmica: {city.feels}°C
+          </p>
+
+          {/* Weather details grid */}
+          <div className="info">
+            <div className="info-item">
+              <span className="info-label">🌡️ Clima</span>
+              <span className="info-value">{city.weather}</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">💨 Viento</span>
+              <span className="info-value">{city.wind} km/h</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">☁️ Nubes</span>
+              <span className="info-value">{city.clouds}%</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">🌡️ Min/Max</span>
+              <span className="info-value">{city.min}° / {city.max}°</span>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* ===== NEW FEATURES SECTION ===== */}
+      <div className="city-features">
+        {/* 
+          FEATURE 1: Clima del Hincha
+          Shows activity suggestions based on weather 
+        */}
+        <ClimaDelHincha weatherData={city} />
+
+        {/* 
+          FEATURE 2: Clima de Cancha
+          Shows soccer playability score 
+        */}
+        <ClimaDeCancha weatherData={city} />
+
+        {/* 
+          FEATURE 3: Hourly Timeline
+          Shows temperature graph for next hours
+          (Only shows if we have forecast data)
+        */}
+        {forecastData && forecastData.length > 0 && (
+          <HourlyTimeline forecastData={forecastData} />
+        )}
+      </div>
+
+      {/* Coordinates footer */}
+      <div className="city-coords">
+        📍 {city.latitud}°, {city.longitud}°
       </div>
     </div>
   );
