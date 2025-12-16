@@ -18,7 +18,7 @@ import NextMatch from './NextMatch';
 import './MatchesByWeather.css';
 
 // OpenWeatherMap API key
-const WEATHER_API_KEY = 'b32216f8417048478f9126d87e0fb170';
+const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 function MatchesByWeather({ onWeatherChange, currentWeather }) {
     const [matches, setMatches] = useState([]);

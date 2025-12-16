@@ -45,9 +45,7 @@ const CITY_TO_COUNTRY = {
     'Cairo': 'Egypt',
     'Lagos': 'Nigeria',
     'Sydney': 'Australia', 'Melbourne': 'Australia',
-    'Beijing': 'China', 'Shanghai': 'China',
-    'Tokyo': 'Japan', 'Osaka': 'Japan',
-    'Seoul': 'South Korea',
+
     'New Delhi': 'India', 'Mumbai': 'India',
     'Riyadh': 'Saudi Arabia',
     'Tehran': 'Iran',

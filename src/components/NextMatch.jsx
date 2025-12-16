@@ -12,7 +12,7 @@ import { getDemoFixture, getNextFixture, isApiConfigured } from '../services/foo
 import './NextMatch.css';
 
 // OpenWeatherMap API key (same as main app)
-const WEATHER_API_KEY = 'b32216f8417048478f9126d87e0fb170';
+const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 function NextMatch({ team, onWeatherReceived }) {
     const [fixture, setFixture] = useState(null);

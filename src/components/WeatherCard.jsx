@@ -52,7 +52,7 @@ export default function WeatherCard({
                 </div>
                 <div className="weather-card__icon">
                     <img
-                        src={`http://openweathermap.org/img/wn/${img}@2x.png`}
+                        src={`https://openweathermap.org/img/wn/${img}@2x.png`}
                         alt={weather}
                     />
                 </div>
@@ -82,7 +82,7 @@ export default function WeatherCard({
                             <div key={index} className="forecast-item">
                                 <span className="forecast-day">{day.dayName}</span>
                                 <img
-                                    src={`http://openweathermap.org/img/wn/${day.icon}.png`}
+                                    src={`https://openweathermap.org/img/wn/${day.icon}.png`}
                                     alt={day.weather}
                                 />
                                 <span className="forecast-temp">{day.min}° / {day.max}°</span>

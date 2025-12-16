@@ -24,7 +24,7 @@ import MatchesByWeather from "../components/MatchesByWeather";
 import WeatherCard from "../components/WeatherCard";
 
 // Your OpenWeatherMap API key
-const apiKey = "b32216f8417048478f9126d87e0fb170";
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
 function App() {
   // State: List of cities

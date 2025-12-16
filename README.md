@@ -1,9 +1,6 @@
 # FUTWEATHER - Clima, Fútbol & Comida ⚽🌦️🍔
 
-![React](https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Vercel](https://img.shields.io/badge/-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
 
 **MatchDay Experience**
 
@@ -47,9 +44,10 @@ Es una aplicación que te permite ver el fixture de fútbol mundial filtrado por
     npm install
     ```
 3.  Configurar variables de entorno:
-    Crea un archivo `.env` en la raíz y agrega tu API Key:
+    Crea un archivo `.env` en la raíz y agrega tus claves de API:
     ```
-    REACT_APP_API_KEY=tu_api_key_aqui
+    REACT_APP_WEATHER_API_KEY=tu_openweather_api_key
+    REACT_APP_RAPIDAPI_KEY=tu_rapidapi_football_key
     ```
 4.  Iniciar la aplicación:
     ```bash

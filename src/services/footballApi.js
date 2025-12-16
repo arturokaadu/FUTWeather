@@ -16,7 +16,7 @@
 // ============================================
 // CONFIGURATION - Put your RapidAPI key here!
 // ============================================
-const API_KEY = process.env.REACT_APP_RAPIDAPI_KEY || 'aedee0444e3eb70c768523e7c719e10c';
+const API_KEY = process.env.REACT_APP_RAPIDAPI_KEY;
 // Note: User provided a Direct API-Sports key (not RapidAPI), so we use the direct endpoint.
 const BASE_URL = 'https://v3.football.api-sports.io';
 
