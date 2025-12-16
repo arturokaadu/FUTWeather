@@ -182,6 +182,7 @@ function FUTCard({
                         src={weatherIcon}
                         alt={weather}
                         className="fut-card__weather-icon"
+                        referrerPolicy="no-referrer"
                     />
                 </div>
 

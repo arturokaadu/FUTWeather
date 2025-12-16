@@ -175,6 +175,7 @@ function NextMatch({ team, onWeatherReceived }) {
                             src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
                             alt={weather.weather}
                             className="next-match__weather-icon"
+                            referrerPolicy="no-referrer"
                         />
                         <span className="next-match__temp">{weather.temp}°C</span>
                     </div>

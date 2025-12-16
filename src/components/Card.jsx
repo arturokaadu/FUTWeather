@@ -16,7 +16,7 @@ export default function Card({ min, max, name, img, onClose, id, feels }) {
         </Link>
         <div className="row justify-content-center">
           <div className="col-sm-4 col-md-4 col-lg-4 ">
-            <img className="iconoClima" src={"https://openweathermap.org/img/wn/" + img + "@2x.png"} width="80" height="80" alt="" />
+            <img className="iconoClima" src={"https://openweathermap.org/img/wn/" + img + "@2x.png"} width="80" height="80" alt="" referrerPolicy="no-referrer" />
           </div>
         </div>
         <div className="row">

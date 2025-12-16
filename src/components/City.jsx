@@ -53,6 +53,7 @@ function City({ city, forecastData }) {
             width="100"
             height="100"
             alt={city.weather}
+            referrerPolicy="no-referrer"
           />
 
           {/* Current temperature - BIG and prominent */}

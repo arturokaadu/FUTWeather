@@ -109,6 +109,7 @@ function MatchCard({ match, weather }) {
                         src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
                         alt={weather.weather}
                         className="match-card__weather-icon"
+                        referrerPolicy="no-referrer"
                     />
                     <span className="match-card__temp">{weather.temp}°C</span>
                     <span className="match-card__condition">{weather.weather}</span>

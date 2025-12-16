@@ -102,9 +102,10 @@ function HourlyTimeline({ forecastData }) {
                         >
                             {/* Weather icon inside the bar */}
                             <img
-                                src={`https://openweathermap.org/img/wn/${item.icon}.png`}
+                                src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
                                 alt=""
                                 className="hourly-timeline__icon"
+                                referrerPolicy="no-referrer"
                             />
                         </div>
 
